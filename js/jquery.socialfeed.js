@@ -110,8 +110,13 @@ if (typeof Object.create !== 'function') {
             this.content.moderation_passed = (options.moderation) ? options.moderation(this.content) : true;
 
             Feed[social_network].posts.push(this);
+
+            console.log(this);
+
         }
+
         SocialFeedPost.prototype = {
+
             render: function() {
                 var rendered_html = Feed.template(this.content);
                 var data = this.content;
@@ -218,7 +223,7 @@ if (typeof Object.create !== 'function') {
             twitter: {
                 posts: [],
                 loaded: false,
-                api: 'http://api.tweecool.com/',
+                api: 'https://api.tweecool.com/',
 
                 getData: function(account) {
 
@@ -270,19 +275,19 @@ if (typeof Object.create !== 'function') {
                             post.id = element.id;
                             //prevent a moment.js console warning due to Twitter's poor date format.
                             post.dt_create = moment(new Date(element.created_at));
-                            post.author_link = 'http://twitter.com/' + element.user.screen_name;
+                            post.author_link = 'https://twitter.com/' + element.user.screen_name;
                             post.author_picture = element.user.profile_image_url;
                             post.post_url = post.author_link + '/status/' + element.id_str;
                             post.author_name = element.user.name;
                             post.message = element.text;
                             post.description = '';
-                            post.link = 'http://twitter.com/' + element.user.screen_name + '/status/' + element.id_str;
+                            post.link = 'https://twitter.com/' + element.user.screen_name + '/status/' + element.id_str;
 
                             if (options.show_media === true) {
                                 if (element.entities.media && element.entities.media.length > 0) {
                                     var image_url = element.entities.media[0].media_url;
                                     if (image_url) {
-                                        post.attachment = '<img class="attachment" src="' + image_url + '" />';
+                                        post.attachment = image_url;
                                     }
                                 }
                             }
@@ -342,7 +347,7 @@ if (typeof Object.create !== 'function') {
                         } else if (element.object_id) {
                             image_url = Feed.facebook.graph + element.object_id + '/picture/?type=normal';
                         }
-                        return '<img class="attachment" src="' + image_url + '" />';
+                        return image_url;
                     },
                     getExternalImageURL: function(image_url, parameter) {
                         image_url = decodeURIComponent(image_url).split(parameter + '=')[1];
@@ -367,13 +372,13 @@ if (typeof Object.create !== 'function') {
 
                         post.id = element.id;
                         post.dt_create = moment(element.created_time);
-                        post.author_link = 'http://facebook.com/' + element.from.id;
+                        post.author_link = 'https://facebook.com/' + element.from.id;
                         post.author_picture = Feed.facebook.graph + element.from.id + '/picture';
                         post.author_name = element.from.name;
                         post.name = element.name || "";
                         post.message = (text) ? text : '';
                         post.description = (element.description) ? element.description : '';
-                        post.link = (element.link) ? element.link : 'http://facebook.com/' + element.from.id;
+                        post.link = (element.link) ? element.link : 'https://facebook.com/' + element.from.id;
 
                         if (options.show_media === true) {
                             if (element.picture) {
@@ -442,7 +447,7 @@ if (typeof Object.create !== 'function') {
                                             }
                                         }
                                     }
-                                    post.attachment = '<img class="attachment" src="' + image + '"/>';
+                                    post.attachment = image;
                                 });
                             }
                         }
@@ -521,14 +526,14 @@ if (typeof Object.create !== 'function') {
 
                         post.id = element.id;
                         post.dt_create = moment(element.created_time * 1000);
-                        post.author_link = 'http://instagram.com/' + element.user.username;
+                        post.author_link = 'https://instagram.com/' + element.user.username;
                         post.author_picture = element.user.profile_picture;
                         post.author_name = element.user.full_name || element.user.username;
                         post.message = (element.caption && element.caption) ? element.caption.text : '';
                         post.description = '';
                         post.link = element.link;
                         if (options.show_media) {
-                            post.attachment = '<img class="attachment" src="' + element.images.standard_resolution.url + '' + '" />';
+                            post.attachment = element.images.standard_resolution.url;
                         }
                         return post;
                     }
@@ -537,7 +542,7 @@ if (typeof Object.create !== 'function') {
             vk: {
                 posts: [],
                 loaded: false,
-                base: 'http://vk.com/',
+                base: 'https://vk.com/',
                 api: 'https://api.vk.com/method/',
                 user_json_template: 'https://api.vk.com/method/' + 'users.get?fields=first_name,%20last_name,%20screen_name,%20photo&uid=',
                 group_json_template: 'https://api.vk.com/method/' + 'groups.getById?fields=first_name,%20last_name,%20screen_name,%20photo&gid=',
@@ -583,11 +588,11 @@ if (typeof Object.create !== 'function') {
                         if (options.show_media) {
                             if (element.attachment) {
                                 if (element.attachment.type === 'link')
-                                    post.attachment = '<img class="attachment" src="' + element.attachment.link.image_src + '" />';
+                                    post.attachment = element.attachment.link.image_src;
                                 if (element.attachment.type === 'video')
-                                    post.attachment = '<img class="attachment" src="' + element.attachment.video.image_big + '" />';
+                                    post.attachment = element.attachment.video.image_big;
                                 if (element.attachment.type === 'photo')
-                                    post.attachment = '<img class="attachment" src="' + element.attachment.photo.src_big + '" />';
+                                    post.attachment = element.attachment.photo.src_big;
                             }
                         }
 
@@ -632,7 +637,7 @@ if (typeof Object.create !== 'function') {
                     switch (account[0]) {
                         case '@':
                             var username = account.substr(1);
-                            url = 'http://' + username + '.blogspot.com/feeds/posts/default?alt=json-in-script&callback=?';
+                            url = 'https://' + username + '.blogspot.com/feeds/posts/default?alt=json-in-script&callback=?';
                             request(url, getPosts);
                             break;
                         default:
@@ -654,7 +659,7 @@ if (typeof Object.create !== 'function') {
 
                             if (options.show_media) {
                                 if (element['media$thumbnail']) {
-                                    post.attachment = '<img class="attachment" src="' + element['media$thumbnail']['url'] + '" />';
+                                    post.attachment = element['media$thumbnail']['url'];
                                 }
                             }
 
@@ -709,7 +714,7 @@ if (typeof Object.create !== 'function') {
                         post.social_network = 'pinterest';
                         post.link = element.link ? element.link : 'https://www.pinterest.com/pin/' + element.id;
                         if (options.show_media) {
-                            post.attachment = '<img class="attachment" src="' + element.image['original'].url + '" />';
+                            post.attachment = element.image['original'].url;
                         }
                         return post;
                     }
@@ -766,7 +771,7 @@ if (typeof Object.create !== 'function') {
                         post.social_network = 'rss';
                         post.link = item.link.href;
                         if (options.show_media && item.thumbnail !== undefined ) {
-                            post.attachment = '<img class="attachment" src="' + item.thumbnail.url + '" />';
+                            post.attachment = item.thumbnail.url;
                         }
                         return post;
                     }

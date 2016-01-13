@@ -4,54 +4,207 @@
 <head>
     <meta charset="utf-8" />
     <!-- Social-feed css -->
-    <link href="css/example.css" rel="stylesheet" type="text/css">
-    <link href="css/jquery.socialfeed.css" rel="stylesheet" type="text/css">
+    <!--<link href="css/example.css" rel="stylesheet" type="text/css">-->
+    <!--<link href="css/jquery.socialfeed.css" rel="stylesheet" type="text/css">-->
     <!-- font-awesome for social network icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
     <!-- This style is needed only for the plugin demo page. Do not use it in your projects -->
+    <style>
+
+        .social-post-panel {
+            height: 300px;
+            background-color: #ffd401;
+            border: 1px solid white;
+            padding: 25px 40px;
+            overflow: hidden;
+            display: block;
+        }
+
+        .social-post-panel__profile-info {
+            padding-left: 60px;
+            padding-top:5px;
+        }
+
+        .social-post-panel__author {
+            font-weight: bold;
+        }
+
+        .social-post-panel__source {
+            margin-right: 5px;
+        }
+
+        .social-post-panel__time {
+            font-style: italic;
+        }
+
+        .social-post-panel__avatar img {
+            border-radius: 100px;
+            width:50px;
+            vertical-align: baseline;
+        }
+
+        .social-post-panel__content--photo-bg {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            left: 0;
+            right: 0;
+            height: 100px;
+            padding: 25px;
+            color: #FFFFFF;
+        }
+    </style>
 </head>
 
 <body>
-    <section class="intro">
-        <div class="container">
-            <h1>social-feed.js</h1>
-            <hr/>
-            <p>jQuery plugin which displays posts by a username and hashtag from the popular social networks:
-                <br/><i>Facebook</i>, <i>Instagram</i>, <i>Twitter</i>, <i>Google+</i>, <i>VK</i>.
-            </p>
-            <hr/>
-            <div class="controls">
-                <a href='https://github.com/pavelk2/social-feed/' target='_blank' class='button'><i class="fa fa-github"></i> Get Started</a>
-            </div>
-        </div>
-    </section>
+
     <section class="stripe">
         <div class="container field">
-            <input type="text" class="input field-left" value="@codesignio, #codesign-io" id="query">
+            <input type="text" class="input field-left" value="@XperiencedTV, #XperiencedTV" id="query">
             <button class='button field-right' id="button-update"><i class="fa fa-refresh"></i>
             </button>
         </div>
     </section>
+
+    <!--<section class="templating-stuff">-->
+
+        <!--<div class="container">-->
+
+            <!--<div class="col-xs-12 col-sm-4 social-post-panel">-->
+
+                    <!--<div class="social-post-panel__content">-->
+
+                            <!--<span class="pull-left social-post-panel__avatar">-->
+                                <!--<img class="media-object" src="http://pbs.twimg.com/profile_images/653689833517412352/baAnT8cr_normal.png">-->
+                            <!--</span>-->
+                            <!--<p class="social-post-panel__profile-info">-->
+                                <!--<span class="social-post-panel__author">@Xperienced TV</span><br>-->
+                                <!--<i class="social-post-panel__source fa fa-twitter"></i>-->
+                                <!--<span class="social-post-panel__time">an hour ago</span>-->
+                            <!--</p>-->
+
+                        <!--<div class="social-post-panel__media-body">-->
+                            <!--<p class="social-feed-text">-->
+                                <!--Just got this off Beatport. Loving the kawaii J-Pop vibe of it.-->
+                                <!--<a target="_blank" href="https://t.co/FsYOODgadZ">https://t.co/FsYOODgadZ</a>-->
+                                <!--<a href="https://twitter.com/XperiencedTV/status/686913520202584064" target="_blank" class="read-button">...</a>-->
+                            <!--</p>-->
+                        <!--</div>-->
+
+                    <!--</div>-->
+
+            <!--</div>-->
+
+            <!--<div class="col-xs-12 col-sm-4 social-post-panel"-->
+                 <!--style="background: no-repeat center/100% url('https://scontent.cdninstagram.com/hphotos-xft1/t51.2885-15/s640x640/sh0.08/e35/11410519_707126556089265_464728738_n.jpg')">-->
+
+                <!--<div class="social-post-panel__content&#45;&#45;photo-bg">-->
+
+                    <!--<span class="pull-left social-post-panel__avatar">-->
+                        <!--<img class="media-object" src="https://scontent.cdninstagram.com/hphotos-xaf1/t51.2885-19/11193090_744151695683196_853547753_a.jpg">-->
+                    <!--</span>-->
+                    <!--<p class="social-post-panel__profile-info">-->
+                        <!--<span class="social-post-panel__author">Brian Milton</span><br>-->
+                        <!--<i class="social-post-panel__source fa fa-instagram"></i>-->
+                        <!--<span class="social-post-panel__time"> 2 months ago</span>-->
+                    <!--</p>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="col-xs-12 col-sm-4 social-post-panel"-->
+                 <!--style="background: no-repeat center/100% url('https://scontent.cdninstagram.com/hphotos-xft1/t51.2885-15/s640x640/sh0.08/e35/11410519_707126556089265_464728738_n.jpg')">-->
+
+                <!--<div class="social-post-panel__content&#45;&#45;photo-bg">-->
+
+                    <!--<span class="pull-left social-post-panel__avatar">-->
+                        <!--<img class="media-object" src="https://scontent.cdninstagram.com/hphotos-xaf1/t51.2885-19/11193090_744151695683196_853547753_a.jpg">-->
+                    <!--</span>-->
+                    <!--<p class="social-post-panel__profile-info">-->
+                        <!--<span class="social-post-panel__author">Brian Milton</span><br>-->
+                        <!--<i class="social-post-panel__source fa fa-instagram"></i>-->
+                        <!--<span class="social-post-panel__time"> 2 months ago</span>-->
+                    <!--</p>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="col-xs-12 col-sm-4 social-post-panel">-->
+
+                <!--<div class="social-post-panel__content">-->
+
+                            <!--<span class="pull-left social-post-panel__avatar">-->
+                                <!--<img class="media-object" src="http://pbs.twimg.com/profile_images/653689833517412352/baAnT8cr_normal.png">-->
+                            <!--</span>-->
+                    <!--<p class="social-post-panel__profile-info">-->
+                        <!--<span class="social-post-panel__author">@Xperienced TV</span><br>-->
+                        <!--<i class="social-post-panel__source fa fa-twitter"></i>-->
+                        <!--<span class="social-post-panel__time">an hour ago</span>-->
+                    <!--</p>-->
+
+                    <!--<div class="social-post-panel__media-body">-->
+                        <!--<p class="social-feed-text">-->
+                            <!--Just got this off Beatport. Loving the kawaii J-Pop vibe of it.-->
+                            <!--<a target="_blank" href="https://t.co/FsYOODgadZ">https://t.co/FsYOODgadZ</a>-->
+                            <!--<a href="https://twitter.com/XperiencedTV/status/686913520202584064" target="_blank" class="read-button">...</a>-->
+                        <!--</p>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+
+            <!--</div>-->
+
+            <!--<div class="col-xs-12 col-sm-4 social-post-panel">-->
+
+                <!--<div class="social-post-panel__content">-->
+
+                            <!--<span class="pull-left social-post-panel__avatar">-->
+                                <!--<img class="media-object" src="http://pbs.twimg.com/profile_images/653689833517412352/baAnT8cr_normal.png">-->
+                            <!--</span>-->
+                    <!--<p class="social-post-panel__profile-info">-->
+                        <!--<span class="social-post-panel__author">@Xperienced TV</span><br>-->
+                        <!--<i class="social-post-panel__source fa fa-twitter"></i>-->
+                        <!--<span class="social-post-panel__time">an hour ago</span>-->
+                    <!--</p>-->
+
+                    <!--<div class="social-post-panel__media-body">-->
+                        <!--<p class="social-feed-text">-->
+                            <!--Just got this off Beatport. Loving the kawaii J-Pop vibe of it.-->
+                            <!--<a target="_blank" href="https://t.co/FsYOODgadZ">https://t.co/FsYOODgadZ</a>-->
+                            <!--<a href="https://twitter.com/XperiencedTV/status/686913520202584064" target="_blank" class="read-button">...</a>-->
+                        <!--</p>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+
+            <!--</div>-->
+
+            <!--<div class="col-xs-12 col-sm-4 social-post-panel"-->
+                 <!--style="background: no-repeat center/100% url('https://scontent.cdninstagram.com/hphotos-xft1/t51.2885-15/s640x640/sh0.08/e35/11410519_707126556089265_464728738_n.jpg')">-->
+
+                <!--<div class="social-post-panel__content&#45;&#45;photo-bg">-->
+
+                    <!--<span class="pull-left social-post-panel__avatar">-->
+                        <!--<img class="media-object" src="https://scontent.cdninstagram.com/hphotos-xaf1/t51.2885-19/11193090_744151695683196_853547753_a.jpg">-->
+                    <!--</span>-->
+                    <!--<p class="social-post-panel__profile-info">-->
+                        <!--<span class="social-post-panel__author">Brian Milton</span><br>-->
+                        <!--<i class="social-post-panel__source fa fa-instagram"></i>-->
+                        <!--<span class="social-post-panel__time"> 2 months ago</span>-->
+                    <!--</p>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+    <!--</section>-->
+
+
     <section class="feed">
         <div class="container">
-            <!--div class="controls">
-                <input type="field" value="#dolomiti" id="query" />
-                <input type="button" value="Update" />
-            </div-->
             <div class="social-feed-container">
             </div>
         </div>
     </section>
-    <section class="stripe">
-        <div class="container field referral">
-            <p>If you like <i>social-feed.js</i>, you can support the developers by making a <a href="https://twitter.com/intent/tweet?hashtags=socialfeedjs&text=Open-source%20jQuery%20plugin%20to%20display%20posts%20from%20different%20social%20networks&tw_p=tweetbutton&url=http%3A%2F%2Fpavelk2.github.io%2Fsocial-feed%2F&via=pavelk2" target="_blank">tweet</a> and/or signing up via referral links on:</p>
-            <ul>
-                <li><a href="https://www.digitalocean.com/?refcode=22a9ed42f948" target="_blank">DigitalOcean</a> (you get 10$) </li>
-                <li><a href="http://mbsy.co/CodeSchool/18980243" target="_blank">CodeSchool</a></li>
-            </ul>
-        </div>
-    </section>
+
     <!-- jQuery -->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Codebird.js - required for TWITTER -->
@@ -66,39 +219,43 @@
     $(document).ready(function() {
 
         var updateFeed = function() {
+
             var initialQuery = $('#query').val();
             initialQuery = initialQuery.replace(" ", "");
+
             var queryTags = initialQuery.split(",");
+
             $('.social-feed-container').socialfeed({
+
                 // FACEBOOK
                 facebook: {
                     accounts: queryTags,
-                    limit: 2,
+                    limit: 5,
                     access_token: '150849908413827|a20e87978f1ac491a0c4a721c961b68c'
                 },
                 // GOOGLEPLUS
-                google: {
-                    accounts: queryTags,
-                    limit: 2,
-                    access_token: 'AIzaSyDAelFmJhg6BSUbSLe8UT7s-G53tL4_KRg'
-                },
+//                google: {
+//                    accounts: queryTags,
+//                    limit: 5,
+//                    access_token: 'AIzaSyDAelFmJhg6BSUbSLe8UT7s-G53tL4_KRg'
+//                },
                 // Twitter
                 twitter: {
                     accounts: queryTags,
-                    limit: 2,
+                    limit: 5,
                     consumer_key: 'qzRXgkI7enflNJH1lWFvujT2P', // make sure to have your app read-only
                     consumer_secret: '8e7E7gHuTwyDHw9lGQFO73FcUwz9YozT37lEvZulMq8FXaPl8O', // make sure to have your app read-only
                 },
                 // VKONTAKTE
                 vk: {
                     accounts: queryTags,
-                    limit: 2,
+                    limit: 5,
                     source: 'all'
                 },
                 // INSTAGRAM
                 instagram: {
                     accounts: queryTags,
-                    limit: 2,
+                    limit: 5,
                     client_id: '88b4730e0e2c4b2f8a09a6184af2e218',
                     access_token: ''
                 },
@@ -106,6 +263,7 @@
                 // GENERAL SETTINGS
                 length: 200,
                 show_media: true,
+
                 // Moderation function - if returns false, template will have class hidden
                 moderation: function(content) {
                     return (content.text) ? content.text.indexOf('fuck') == -1 : true;
@@ -119,6 +277,7 @@
         };
 
         updateFeed();
+
         $('#button-update').click(function() {
             //first, get rid of old data/posts.
             $('.social-feed-container').html('');
@@ -128,23 +287,6 @@
         });
 
     });
-    </script>
-    <!-- Remove this part on your website. This is only to track the popularity of the Social-feed plugin website-->
-    <script>
-    (function(i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function() {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-59783367-1', 'auto');
-    ga('send', 'pageview');
     </script>
 </body>
 
